@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cryptography Interface</title>
+</head>
+<body>
+    <h1>Cryptography Interface</h1>
+
+    <form action="/crypto/generate-keys" method="post">
+        <button type="submit">Generate Keys</button>
+    </form>
+
+    <h2>Encrypt File</h2>
+    <form action="/crypto/encrypt" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Encrypt File</button>
+    </form>
+
+    <h2>Decrypt File</h2>
+    <form action="/crypto/decrypt" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Decrypt File</button>
+    </form>
+
+    <div th:if="${message}">
+        <p th:text="${message}"></p>
+    </div>
+
+    <div th:if="${encryptedData}">
+        <h3>Encrypted Data:</h3>
+        <pre th:text="${encryptedData}"></pre>
+    </div>
+
+    <div th:if="${decryptedData}">
+        <h3>Decrypted Data:</h3>
+        <pre th:text="${decryptedData}"></pre>
+    </div>
+</body>
+</html>
